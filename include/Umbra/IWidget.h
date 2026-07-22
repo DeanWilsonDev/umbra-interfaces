@@ -31,6 +31,7 @@ struct IrisPropDiff {
     std::optional<std::function<void()>>  OnHover;
     std::optional<std::function<void()>>  OnFocus;
     std::optional<std::function<void()>>  OnChange;
+    std::optional<std::function<void(std::string)>> OnTextChange;
 };
 
 // The backend-agnostic contract a live widget must satisfy for a reconciler (e.g.
