@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Umbra/LivenessGuard.h"
+
 namespace Umbra {
 
 // Per-frame timing handed to lifecycle hooks. A plain struct (not a float parameter)
@@ -19,7 +21,19 @@ public:
     virtual void OnMount() {}
     virtual void OnUnmount() {}
     virtual void OnTick(const TickInfo& Info) {}
+
+    // Debug-only destruction-order guard (LivenessGuard.h) -- anything holding a raw,
+    // non-owning IWidgetLifecycle* past what it can prove is this object's own lifetime
+    // (e.g. penumbra-ui-backend's UmbraLifecycleBridge::Inner_) should keep a
+    // LivenessGuard::Watch from this and call Watch::AssertAlive(...) immediately before
+    // dereferencing the pointer in OnMount/OnUnmount/OnTick, instead of risking a
+    // dangling-pointer crash inside whatever runtime implements this interface.
+    const LivenessGuard& Liveness() const { return Liveness_; }
+
     virtual ~IWidgetLifecycle() = default;
+
+private:
+    LivenessGuard Liveness_;
 };
 
 } // namespace Umbra

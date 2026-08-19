@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Umbra/LivenessGuard.h"
 #include "Umbra/TextureHandle.h"
 
 #include <cstddef>
@@ -67,7 +68,18 @@ public:
     // expressed: RemoveChildAt then InsertChildAt at the new position).
     virtual std::unique_ptr<IWidget> RemoveChildAt(std::size_t Index) = 0;
 
+    // Debug-only destruction-order guard (LivenessGuard.h) -- anything holding a raw,
+    // non-owning IWidget* past what it can prove is this object's own lifetime (e.g.
+    // Iris's SlotState::AttachedParent_) should keep a LivenessGuard::Watch from this
+    // and call Watch::AssertAlive(...) immediately before dereferencing the pointer in
+    // its own destructor, instead of risking a dangling-pointer crash inside whatever
+    // concrete backend implements this interface.
+    const LivenessGuard& Liveness() const { return Liveness_; }
+
     virtual ~IWidget() = default;
+
+private:
+    LivenessGuard Liveness_;
 };
 
 } // namespace Umbra
