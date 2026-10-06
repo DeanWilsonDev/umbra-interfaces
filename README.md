@@ -29,6 +29,13 @@ e.g. `iris-penumbra-backend`) depends on it to know what shape to implement.
 - `include/Umbra/TextureHandle.h` — an opaque texture-handle vocabulary type, referenced
   by `IrisPropDiff::Handle`.
 
+## Requirements
+
+- GCC 14 or later, Clang 18 or later, or a recent AppleClang
+- On Windows, clang-cl from Clang 18 or later; MSVC's cl.exe isn't supported
+- CMake 3.30 or later
+- C++26 — the `umbra_interfaces` target requires `cxx_std_26` of everything that links it
+
 ## Build
 
 Header-only; nothing to build standalone. Consuming projects add this repo as a git
