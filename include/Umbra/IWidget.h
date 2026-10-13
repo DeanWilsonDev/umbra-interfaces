@@ -8,6 +8,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <unordered_map>
 
 namespace Umbra {
 
@@ -24,6 +25,12 @@ struct IrisPropDiff {
     std::optional<std::function<void()>>  OnFocus;
     std::optional<std::function<void()>>  OnChange;
     std::optional<std::function<void(std::string)>> OnTextChange;
+
+    // Every number-valued prop (int or float) whose value changed or was added, by
+    // name, ints widened to float. Lets a backend follow numeric props it reads by
+    // name rather than through a field of their own -- a stylesheet's `attr()`
+    // bindings, say -- without this struct growing a field per prop.
+    std::unordered_map<std::string, float> Numbers;
 };
 
 // The backend-agnostic contract a live widget must satisfy for a reconciler (e.g.
