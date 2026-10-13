@@ -9,6 +9,7 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 namespace Umbra {
 
@@ -31,6 +32,12 @@ struct IrisPropDiff {
     // name rather than through a field of their own -- a stylesheet's `attr()`
     // bindings, say -- without this struct growing a field per prop.
     std::unordered_map<std::string, float> Numbers;
+
+    // The same for string props (every one, including those with a field above), and
+    // for the two list kinds: a chart's `labels`, a series' `values`.
+    std::unordered_map<std::string, std::string>              Strings;
+    std::unordered_map<std::string, std::vector<float>>       NumberLists;
+    std::unordered_map<std::string, std::vector<std::string>> StringLists;
 };
 
 // The backend-agnostic contract a live widget must satisfy for a reconciler (e.g.
