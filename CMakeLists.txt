@@ -15,7 +15,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ---------------------------------------------------------------------------
 # Header-only, zero-dependency, on purpose: this package names no concrete
-# runtime (Iris, or any future one) and no concrete backend (Penumbra, or
+# runtime (Chaos, or any future one) and no concrete backend (Penumbra, or
 # any future Umbra Engine backend) anywhere in it. Anything that would give
 # it an opinion about either side belongs in one of them, not here.
 # ---------------------------------------------------------------------------

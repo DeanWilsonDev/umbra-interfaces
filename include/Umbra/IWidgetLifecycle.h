@@ -11,7 +11,7 @@ struct TickInfo {
     float DeltaSeconds = 0.0f;
 };
 
-// Shared lifecycle contract between a widget-owning runtime (Iris, for now) and a
+// Shared lifecycle contract between a widget-owning runtime (Chaos, for now) and a
 // backend's own frame loop (Penumbra's Application today; a future Umbra Engine
 // backend later). The backend calls these hooks; it never calls into the runtime
 // directly, and this header names nothing runtime- or backend-specific — that's the

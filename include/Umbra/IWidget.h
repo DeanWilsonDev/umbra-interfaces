@@ -13,7 +13,7 @@
 
 namespace Umbra {
 
-struct IrisPropDiff {
+struct ChaosPropDiff {
     std::optional<std::string>            ClassName;
     std::optional<std::string>            Text;
     std::optional<std::string>            Src;
@@ -41,8 +41,8 @@ struct IrisPropDiff {
 };
 
 // The backend-agnostic contract a live widget must satisfy for a reconciler (e.g.
-// Iris's Stage 3) to update it in place without knowing the concrete backend type
-// underneath. A backend adapter (e.g. `iris-penumbra-backend`'s bridge from
+// Chaos's Stage 3) to update it in place without knowing the concrete backend type
+// underneath. A backend adapter (e.g. `penumbra-ui-backend`'s bridge from
 // `Penumbra::Widgets::WidgetBase`) implements this to translate calls here into
 // whatever that backend's real widget API actually looks like.
 //
@@ -58,7 +58,7 @@ struct IrisPropDiff {
 // `WidgetBase::GetChildCount`/`GetChildAt` defaults.
 class IWidget {
 public:
-    virtual void ApplyPropDiff(const IrisPropDiff& Diff) = 0;
+    virtual void ApplyPropDiff(const ChaosPropDiff& Diff) = 0;
 
     virtual std::size_t GetChildCount() const = 0;
     virtual IWidget*    GetChildAt(std::size_t Index) const = 0;
@@ -75,7 +75,7 @@ public:
 
     // Debug-only destruction-order guard (LivenessGuard.h) -- anything holding a raw,
     // non-owning IWidget* past what it can prove is this object's own lifetime (e.g.
-    // Iris's SlotState::AttachedParent_) should keep a LivenessGuard::Watch from this
+    // Chaos's SlotState::AttachedParent_) should keep a LivenessGuard::Watch from this
     // and call Watch::AssertAlive(...) immediately before dereferencing the pointer in
     // its own destructor, instead of risking a dangling-pointer crash inside whatever
     // concrete backend implements this interface.
