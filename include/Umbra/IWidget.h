@@ -40,6 +40,12 @@ struct ChaosPropDiff {
     std::optional<std::function<void()>>             OnDragLeave;
     std::optional<std::function<void(std::string)>>  OnDrop;
 
+    // A key no focused field used, when this is the topmost element, in paint order, with
+    // an OnKeyDown: a menu over a modal gets it before the modal does. The key is named as
+    // the web's `KeyboardEvent.key` names it ("Escape", "Enter", "Tab", "ArrowDown", "Home",
+    // "Backspace"). A backend sends only the keys it knows.
+    std::optional<std::function<void(std::string)>>  OnKeyDown;
+
     // Every number-valued prop (int or float) whose value changed or was added, by
     // name, ints widened to float. Lets a backend follow numeric props it reads by
     // name rather than through a field of their own -- a stylesheet's `attr()`
