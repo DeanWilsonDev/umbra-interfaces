@@ -27,6 +27,19 @@ struct ChaosPropDiff {
     std::optional<std::function<void()>>  OnChange;
     std::optional<std::function<void(std::string)>> OnTextChange;
 
+    // Drag and drop. An element with a `dragPayload` string prop (in `Strings`) is
+    // draggable: once a press passes the backend's threshold it gets OnDragStart, then
+    // OnDrag with the pointer's window position in logical pixels as the drag starts and
+    // on every move, then OnDragEnd on release, dropped or not. An element with any of
+    // the last three is a drop target: OnDragEnter and OnDragLeave as a drag's pointer
+    // crosses it, OnDrop with the payload on release over it.
+    std::optional<std::function<void()>>             OnDragStart;
+    std::optional<std::function<void(float, float)>> OnDrag;
+    std::optional<std::function<void()>>             OnDragEnd;
+    std::optional<std::function<void()>>             OnDragEnter;
+    std::optional<std::function<void()>>             OnDragLeave;
+    std::optional<std::function<void(std::string)>>  OnDrop;
+
     // Every number-valued prop (int or float) whose value changed or was added, by
     // name, ints widened to float. Lets a backend follow numeric props it reads by
     // name rather than through a field of their own -- a stylesheet's `attr()`
