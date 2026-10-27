@@ -46,7 +46,10 @@ struct ChaosPropDiff {
     // "Backspace"). A backend sends only the keys it knows.
     std::optional<std::function<void(std::string)>>  OnKeyDown;
 
-    // The release of a key OnKeyDown would have delivered, named the same way.
+    // The release of a key OnKeyDown would have delivered, named the same way and routed
+    // the same way: to the topmost element with an OnKeyUp at the time of the release,
+    // not to whichever element took the press. An element that tracks held keys treats
+    // a release it never sees as released when it stops being topmost.
     std::optional<std::function<void(std::string)>>  OnKeyUp;
 
     // The pointer leaving an element it was over; the counterpart of OnHover.

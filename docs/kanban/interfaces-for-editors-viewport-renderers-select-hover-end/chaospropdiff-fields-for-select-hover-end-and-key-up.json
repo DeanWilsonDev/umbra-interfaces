@@ -2,7 +2,7 @@
   "id": "chaospropdiff-fields-for-select-hover-end-and-key-up",
   "path": "interfaces-for-editors-viewport-renderers-select-hover-end/chaospropdiff-fields-for-select-hover-end-and-key-up",
   "kind": "task",
-  "name": "ChaosPropDiff fields for select, hover end and key-up",
+  "name": "ChaosPropDiff fields for select, toggle, hover end and key-up",
   "status": "todo",
   "priority": 1,
   "parent": "interfaces-for-editors-viewport-renderers-select-hover-end",
