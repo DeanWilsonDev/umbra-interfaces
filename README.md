@@ -28,6 +28,10 @@ e.g. `penumbra-ui-backend`) depends on it to know what shape to implement.
   that needs to run logic alongside it.
 - `include/Umbra/TextureHandle.h` — an opaque texture-handle vocabulary type, referenced
   by `ChaosPropDiff::Handle`.
+- `include/Umbra/IViewportRenderer.h` — `IViewportRenderer`, the contract a host (a game
+  engine's editor, say) implements so a runtime's `<viewport renderer="Name">` element can
+  show a scene the host renders itself: `Render(width, height)` returns a `ViewportFrame`
+  of RGBA8 pixels, and the backend forwards pointer, wheel, key, hover and tick events.
 
 ## Requirements
 

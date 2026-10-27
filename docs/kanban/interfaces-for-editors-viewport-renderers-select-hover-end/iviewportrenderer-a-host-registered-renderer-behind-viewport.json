@@ -1,0 +1,19 @@
+{
+  "id": "iviewportrenderer-a-host-registered-renderer-behind-viewport",
+  "path": "interfaces-for-editors-viewport-renderers-select-hover-end/iviewportrenderer-a-host-registered-renderer-behind-viewport",
+  "kind": "task",
+  "name": "IViewportRenderer: a host-registered renderer behind <viewport>",
+  "status": "todo",
+  "priority": 1,
+  "parent": "interfaces-for-editors-viewport-renderers-select-hover-end",
+  "created": "2026-10-27",
+  "updated": "2026-10-27",
+  "body": "# IViewportRenderer\n\n`include/Umbra/IViewportRenderer.h`: the contract a host implements so that a `<viewport renderer=\"Name\">` element can\nshow its scene, with no backend or runtime type in it.\n\n```cpp\nstruct ViewportFrame { const std::uint8_t* Pixels; std::uint32_t Width, Height; }; // RGBA8, top row first\nclass IViewportRenderer {\n    virtual std::optional<ViewportFrame> Render(std::uint32_t WidthPixels, std::uint32_t HeightPixels) = 0;\n    virtual void PointerMoved(float X, float Y) {}                 // viewport pixels\n    virtual void PointerButton(int Button, bool Down, ViewportModifiers) {}\n    virtual void Wheel(float Notches, float NotchesX) {}\n    virtual bool Key(std::string_view KeyName, bool Down, ViewportModifiers) { return false; }\n    virtual void Tick(float Seconds) {}\n    virtual void HoverChanged(bool PointerIsOver) {}\n};\n```\n\nA backend uploads the pixels into whatever its renderer draws with; the host never touches the UI toolkit.\n\n**Done when** penumbra-ui-backend builds `<viewport>` on it and Lantern's editor registers two renderers (the level\nview and the asset preview) with no Penumbra code of its own.",
+  "comments": [],
+  "details": [],
+  "plan": "",
+  "acceptance_criteria": [],
+  "definition_of_done": [],
+  "questions": [],
+  "key": ""
+}

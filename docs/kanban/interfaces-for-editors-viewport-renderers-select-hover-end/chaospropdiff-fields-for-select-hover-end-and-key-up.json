@@ -1,0 +1,19 @@
+{
+  "id": "chaospropdiff-fields-for-select-hover-end-and-key-up",
+  "path": "interfaces-for-editors-viewport-renderers-select-hover-end/chaospropdiff-fields-for-select-hover-end-and-key-up",
+  "kind": "task",
+  "name": "ChaosPropDiff fields for select, hover end and key-up",
+  "status": "todo",
+  "priority": 1,
+  "parent": "interfaces-for-editors-viewport-renderers-select-hover-end",
+  "created": "2026-10-27",
+  "updated": "2026-10-27",
+  "body": "# New prop-diff fields\n\n`ChaosPropDiff` gains `OnSelect` (`std::function<void(std::string)>`, a `<select>`'s chosen option), `OnHoverEnd`\n(`std::function<void()>`), `OnKeyUp` (`std::function<void(std::string)>`) and `OnToggle`\n(`std::function<void(bool)>`, a `<checkbox>`'s new state). `Checked` already exists. Options for a select travel in\n`StringLists[\"options\"]`, the selected option in `Strings[\"selected\"]`.",
+  "comments": [],
+  "details": [],
+  "plan": "",
+  "acceptance_criteria": [],
+  "definition_of_done": [],
+  "questions": [],
+  "key": ""
+}
