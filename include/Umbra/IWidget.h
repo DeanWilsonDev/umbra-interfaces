@@ -46,6 +46,23 @@ struct ChaosPropDiff {
     // "Backspace"). A backend sends only the keys it knows.
     std::optional<std::function<void(std::string)>>  OnKeyDown;
 
+    // The release of a key OnKeyDown would have delivered, named the same way and routed
+    // the same way: to the topmost element with an OnKeyUp at the time of the release,
+    // not to whichever element took the press. An element that tracks held keys treats
+    // a release it never sees as released when it stops being topmost.
+    std::optional<std::function<void(std::string)>>  OnKeyUp;
+
+    // The pointer leaving an element it was over; the counterpart of OnHover.
+    std::optional<std::function<void()>>             OnHoverEnd;
+
+    // A `<select>`'s chosen option. Its options travel in StringLists["options"] and
+    // the current one in Strings["selected"].
+    std::optional<std::function<void(std::string)>>  OnSelect;
+
+    // A `<checkbox>`'s new state after the user toggles it. Checked carries the
+    // state the program set.
+    std::optional<std::function<void(bool)>>         OnToggle;
+
     // Every number-valued prop (int or float) whose value changed or was added, by
     // name, ints widened to float. Lets a backend follow numeric props it reads by
     // name rather than through a field of their own -- a stylesheet's `attr()`

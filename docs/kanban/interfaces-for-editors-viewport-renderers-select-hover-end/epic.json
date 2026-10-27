@@ -1,0 +1,19 @@
+{
+  "id": "interfaces-for-editors-viewport-renderers-select-hover-end",
+  "path": "interfaces-for-editors-viewport-renderers-select-hover-end",
+  "kind": "epic",
+  "name": "Interfaces for editors: viewport renderers, select, toggle, hover end, key up",
+  "status": "todo",
+  "priority": 2,
+  "parent": null,
+  "created": "2026-10-27",
+  "updated": "2026-10-27",
+  "body": "# Interfaces for editors\n\nThe backend-agnostic contracts Lantern's world editor needs between Chaos and a rendering backend: a viewport\nrenderer a host registers by name (Dean's answer on `GAME-F02-T05`), and the prop-diff fields for `<select>`, `<checkbox>`\n(`OnSelect`, `OnToggle`), hover end (`OnHoverEnd`) and key-up (`OnKeyUp`). This package stays dependency-free.",
+  "comments": [],
+  "details": [],
+  "plan": "",
+  "acceptance_criteria": [],
+  "definition_of_done": [],
+  "questions": [],
+  "key": ""
+}
