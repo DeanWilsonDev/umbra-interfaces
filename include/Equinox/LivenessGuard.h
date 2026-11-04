@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <memory>
 
-namespace Umbra {
+namespace Equinox {
 
 // A destruction-order guard: an owned object embeds one as a member (cost: one
 // shared_ptr<char>). Anything holding a raw, non-owning pointer into that object keeps a
@@ -18,7 +18,7 @@ namespace Umbra {
 // of a dynamic_cast-on-garbage crash (or worse, silent corruption) several frames removed
 // from the actual mistake, only diagnosable after the fact via a debugger backtrace or
 // ASan. Every real crash this was written against (see pharos-proto's own
-// docs/next_steps.md) was exactly this shape: a raw Umbra::IWidget*/Umbra::
+// docs/next_steps.md) was exactly this shape: a raw Equinox::IWidget*/Equinox::
 // IWidgetLifecycle* held past the pointee's own destruction, only found afterward via
 // lldb -- SlotState::~SlotState() -> PenumbraWidget::RemoveChildAt's dangling
 // dynamic_cast, and UmbraLifecycleBridge::OnTick/OnUnmount's dangling Inner_.
@@ -74,8 +74,8 @@ public:
         void AssertAlive(const char* What) const {
             if (Token_.expired()) {
                 std::fprintf(stderr,
-                    "Umbra::LivenessGuard: %s was destroyed before its watcher -- fix "
-                    "destruction order (see umbra-interfaces/include/Umbra/LivenessGuard.h)\n",
+                    "Equinox::LivenessGuard: %s was destroyed before its watcher -- fix "
+                    "destruction order (see equinox-interfaces/include/Equinox/LivenessGuard.h)\n",
                     What);
                 std::abort();
             }
@@ -92,4 +92,4 @@ private:
 
 #endif
 
-} // namespace Umbra
+} // namespace Equinox

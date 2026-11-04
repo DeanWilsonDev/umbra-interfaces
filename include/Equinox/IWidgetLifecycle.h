@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Umbra/LivenessGuard.h"
+#include "Equinox/LivenessGuard.h"
 
-namespace Umbra {
+namespace Equinox {
 
 // Per-frame timing handed to lifecycle hooks. A plain struct (not a float parameter)
 // so more fields (e.g. total elapsed time) can be added later without changing every
@@ -36,4 +36,4 @@ private:
     LivenessGuard Liveness_;
 };
 
-} // namespace Umbra
+} // namespace Equinox

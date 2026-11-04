@@ -4,7 +4,7 @@
 #include <optional>
 #include <string_view>
 
-namespace Umbra {
+namespace Equinox {
 
 // One rendered frame of a viewport: tightly packed RGBA8 pixels, top row first. The
 // pointer is owned by the renderer and stays valid until its next Render call; a
@@ -68,4 +68,4 @@ public:
     virtual ~IViewportRenderer() = default;
 };
 
-} // namespace Umbra
+} // namespace Equinox
