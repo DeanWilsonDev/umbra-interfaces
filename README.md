@@ -1,4 +1,4 @@
-# equinox
+# equinox-interfaces
 
 Backend-agnostic interfaces shared between a widget-owning reactive runtime and its
 rendering backends — currently used by [Chaos](https://github.com/DeanWilsonDev/chaos) (the
@@ -38,15 +38,15 @@ e.g. `penumbra-ui-backend`) depends on it to know what shape to implement.
 - GCC 14 or later, Clang 19 or later, or a recent AppleClang
 - On Windows, clang-cl from Clang 19 or later; MSVC's cl.exe isn't supported
 - CMake 3.30 or later
-- C++26 — the `equinox` target requires `cxx_std_26` of everything that links it
+- C++26 — the `equinox_interfaces` target requires `cxx_std_26` of everything that links it
 
 ## Build
 
 Header-only; nothing to build standalone. Consuming projects add this repo as a git
-submodule and `add_subdirectory` it, linking against the `equinox` INTERFACE
+submodule and `add_subdirectory` it, linking against the `equinox_interfaces` INTERFACE
 target:
 
 ```cmake
-add_subdirectory(vendor/equinox)
-target_link_libraries(your_target PUBLIC equinox)
+add_subdirectory(vendor/equinox-interfaces)
+target_link_libraries(your_target PUBLIC equinox_interfaces)
 ```

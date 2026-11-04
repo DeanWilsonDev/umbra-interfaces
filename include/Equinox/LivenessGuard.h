@@ -75,7 +75,7 @@ public:
             if (Token_.expired()) {
                 std::fprintf(stderr,
                     "Equinox::LivenessGuard: %s was destroyed before its watcher -- fix "
-                    "destruction order (see equinox/include/Equinox/LivenessGuard.h)\n",
+                    "destruction order (see equinox-interfaces/include/Equinox/LivenessGuard.h)\n",
                     What);
                 std::abort();
             }
