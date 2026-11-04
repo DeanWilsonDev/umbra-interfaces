@@ -1,4 +1,4 @@
-# umbra-interfaces
+# equinox
 
 Backend-agnostic interfaces shared between a widget-owning reactive runtime and its
 rendering backends — currently used by [Chaos](https://github.com/DeanWilsonDev/chaos) (the
@@ -20,15 +20,15 @@ e.g. `penumbra-ui-backend`) depends on it to know what shape to implement.
 
 ## What's here
 
-- `include/Umbra/IWidget.h` — `IWidget::ApplyPropDiff(const ChaosPropDiff&)`, the
+- `include/Equinox/IWidget.h` — `IWidget::ApplyPropDiff(const ChaosPropDiff&)`, the
   reconciler-facing update contract, and `ChaosPropDiff` itself: one `std::optional` field
   per prop-value kind a Core primitive can carry.
-- `include/Umbra/IWidgetLifecycle.h` — `IWidgetLifecycle` (`OnMount`/`OnUnmount`/`OnTick`)
+- `include/Equinox/IWidgetLifecycle.h` — `IWidgetLifecycle` (`OnMount`/`OnUnmount`/`OnTick`)
   and `TickInfo`, the per-frame hook contract between a backend's frame loop and anything
   that needs to run logic alongside it.
-- `include/Umbra/TextureHandle.h` — an opaque texture-handle vocabulary type, referenced
+- `include/Equinox/TextureHandle.h` — an opaque texture-handle vocabulary type, referenced
   by `ChaosPropDiff::Handle`.
-- `include/Umbra/IViewportRenderer.h` — `IViewportRenderer`, the contract a host (a game
+- `include/Equinox/IViewportRenderer.h` — `IViewportRenderer`, the contract a host (a game
   engine's editor, say) implements so a runtime's `<viewport renderer="Name">` element can
   show a scene the host renders itself: `Render(width, height)` returns a `ViewportFrame`
   of RGBA8 pixels, and the backend forwards pointer, wheel, key, hover and tick events.
@@ -38,15 +38,15 @@ e.g. `penumbra-ui-backend`) depends on it to know what shape to implement.
 - GCC 14 or later, Clang 19 or later, or a recent AppleClang
 - On Windows, clang-cl from Clang 19 or later; MSVC's cl.exe isn't supported
 - CMake 3.30 or later
-- C++26 — the `umbra_interfaces` target requires `cxx_std_26` of everything that links it
+- C++26 — the `equinox` target requires `cxx_std_26` of everything that links it
 
 ## Build
 
 Header-only; nothing to build standalone. Consuming projects add this repo as a git
-submodule and `add_subdirectory` it, linking against the `umbra_interfaces` INTERFACE
+submodule and `add_subdirectory` it, linking against the `equinox` INTERFACE
 target:
 
 ```cmake
-add_subdirectory(vendor/umbra-interfaces)
-target_link_libraries(your_target PUBLIC umbra_interfaces)
+add_subdirectory(vendor/equinox)
+target_link_libraries(your_target PUBLIC equinox)
 ```

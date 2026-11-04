@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Umbra {
+namespace Equinox {
 
 // Opaque, runtime-owned reference to a decoded backend texture. A texture handle is a
 // rendering-backend concept, not specific to any one project depending on this
@@ -16,4 +16,4 @@ public:
     TextureHandle() = default;
 };
 
-} // namespace Umbra
+} // namespace Equinox

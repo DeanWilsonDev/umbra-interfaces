@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Umbra/LivenessGuard.h"
-#include "Umbra/TextureHandle.h"
+#include "Equinox/LivenessGuard.h"
+#include "Equinox/TextureHandle.h"
 
 #include <cstddef>
 #include <functional>
@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace Umbra {
+namespace Equinox {
 
 struct ChaosPropDiff {
     std::optional<std::string>            ClassName;
@@ -123,4 +123,4 @@ private:
     LivenessGuard Liveness_;
 };
 
-} // namespace Umbra
+} // namespace Equinox
